@@ -33,4 +33,6 @@ jobs:
         run: chmod +x gradlew
         
       - name: Clean and test
-        run: ./gradlew clean test --no-daemon
+        run: |
+          export JAVA_OPTS="-Xmx512m"
+          ./gradlew clean test --no-daemon
