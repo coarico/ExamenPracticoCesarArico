@@ -1,0 +1,325 @@
+{
+	"info": {
+		"_postman_id": "inventory-management-arico",
+		"name": "Inventory Management - Cesar Arico",
+		"description": "Postman collection for Inventory Management System - Cesar Arico",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Crear Dispositivo",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Laptop Dell\",\n    \"serial\": \"ABC-001\",\n    \"category\": \"Laptop\",\n    \"stock\": 10,\n    \"available\": true\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/api/cesararico/devices",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"cesararico",
+						"devices"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listar Todos los Dispositivos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/cesararico/devices",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"cesararico",
+						"devices"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener Dispositivo por ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/arico/devices/{{device_id}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"arico",
+						"devices",
+						"{{device_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Desactivar Dispositivo",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/arico/devices/{{device_id}}/deactivate",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"arico",
+						"devices",
+						"{{device_id}}",
+						"deactivate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar Dispositivo (Lógico)",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/arico/devices/{{device_id}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"arico",
+						"devices",
+						"{{device_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Buscar por Categoría (Parcial)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/arico/devices/search?category=lap",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"arico",
+						"devices",
+						"search"
+					],
+					"query": [
+						{
+							"key": "category",
+							"value": "lap"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "BONUS - Dispositivos con Stock Bajo",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/arico/devices/low-stock",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"arico",
+						"devices",
+						"low-stock"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Estadísticas de Inventario",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/arico/devices/stats",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"arico",
+						"devices",
+						"stats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Prueba 1 - Serial Duplicado (ERROR)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Laptop Dell 2\",\n    \"serial\": \"ABC-001\",\n    \"category\": \"Laptop\",\n    \"stock\": 5,\n    \"available\": true\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/api/cesararico/devices",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"cesararico",
+						"devices"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Prueba 2 - Stock Negativo (ERROR)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Router TP-Link\",\n    \"serial\": \"XYZ-999\",\n    \"category\": \"Router\",\n    \"stock\": -5,\n    \"available\": true\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/api/cesararico/devices",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"cesararico",
+						"devices"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear Dispositivos para Pruebas",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Laptop Gamer\",\n    \"serial\": \"ABC-002\",\n    \"category\": \"Laptop Gamer\",\n    \"stock\": 3,\n    \"available\": true\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/api/cesararico/devices",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"cesararico",
+						"devices"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear Router para Pruebas",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Router ASUS\",\n    \"serial\": \"XYZ-001\",\n    \"category\": \"Router\",\n    \"stock\": 15,\n    \"available\": false\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/api/cesararico/devices",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"cesararico",
+						"devices"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "H2 Console",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/h2-console",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"h2-console"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:8082",
+			"type": "string"
+		},
+		{
+			"key": "device_id",
+			"value": "1",
+			"type": "string"
+		}
+	]
+}
