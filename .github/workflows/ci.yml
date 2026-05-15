@@ -34,6 +34,5 @@ jobs:
         
       - name: Clean and test
         run: |
-          java -version
-          ./gradlew --version
+          export GRADLE_OPTS="-Xmx1024m"
           ./gradlew clean test --no-daemon
